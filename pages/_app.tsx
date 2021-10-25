@@ -7,7 +7,9 @@ import {
   Image,
   Heading,
   Text,
-  Divider
+  Divider,
+  Flex,
+  Link
 } from "@chakra-ui/react";
 import { AppProps } from "next/dist/shared/lib/router/router";
 
@@ -62,6 +64,25 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
                 <Text color="gray.500" fontWeight="600">
                   {information.description}
                 </Text>
+                <Stack direction="row" spacing={4}>
+                  {information.social.map((social) => (
+                    <Link key={social.name} isExternal href={social.link}>
+                      <Flex
+                        height={12}
+                        width={12}
+                        alignItems="center"
+                        justifyContent="center"
+                        backgroundColor="primary.500"
+                        color="white"
+                        borderRadius={99999}
+                      >
+                        <Image
+                          src={`https://icongr.am/fontawesome/${social.name}.svg?size=28&color=ffffff`}
+                        />
+                      </Flex>
+                    </Link>
+                  ))}
+                </Stack>
               </Stack>
             </Stack>
           </Stack>
