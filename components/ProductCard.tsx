@@ -12,15 +12,16 @@ interface ProductCardProps {
 const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
   const [isVisible, setIsVisible] = useState(false);
 
-  function over(e) {
+  function over() {
     setIsVisible(true);
   }
-  function out(e) {
+  function out() {
     setIsVisible(false);
   }
   return (
     <>
       <Stack
+        height={300}
         backgroundColor="primary.100"
         borderRadius="md"
         pos={"relative"}
@@ -31,64 +32,59 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
         p="6"
         rounded="md"
         cursor="pointer"
-        _hover={{ boxShadow: "2xl", mt: "-10" }}
+        _hover={{ boxShadow: "dark-lg" }}
         onMouseOver={over}
         onMouseOut={out}
       >
-        <Stack spacing={1}>
-          <Box
-            maxW={"330px"}
-            w={"full"}
+        <Stack
+          spacing={1}
+          maxW={"330px"}
+          w={"full"}
+          objectFit="cover"
+          borderRadius="md"
+          mt={5}
+          _hover={{
+            mt: -10,
+            transition: "0.8s"
+          }}
+        >
+          <Image
+            width="100%"
+            maxHeight={128}
+            mb={5}
             objectFit="cover"
             borderRadius="md"
-            _hover={{ mt: "-10", boxShadow: "dark-lg" }}
-            _after={{
-              transition: "all .3s ease",
-              content: '""',
-              w: "full",
-              h: "full",
-              pos: "absolute",
-              top: 5,
-              left: 0,
-              backgroundImage: `{product.image}`,
-              filter: "blur(15px)",
-              zIndex: -1
-            }}
+            src={product.image}
+            _hover={{ boxShadow: "dark-lg" }}
+          />
+
+          <Text
+            fontSize="2xl"
+            color="primary.800"
+            fontWeight={500}
+            textAlign="center"
           >
-            <Image
-              width="100%"
-              maxHeight={128}
-              objectFit="cover"
-              borderRadius="md"
-              src={product.image}
-            />
-          </Box>
-          <Text color="primary.800" fontWeight={500}>
             {product.title}
           </Text>
-          <Text fontSize="sm">{product.description}</Text>
-        </Stack>
-
-        <Stack
-          alignItems="flex-end"
-          direction="row"
-          justifyContent="space-between"
-          display={isVisible ? "block" : "none"}
-        >
-          <Text color="green.500" fontSize="sm" fontWeight="500">
-            {parseCurrency(product.price)}
+          <Text fontSize="lg" textAlign="center">
+            {product.description}{" "}
           </Text>
-          <Button
-            size="sm"
-            bg="primary.400"
-            fontWeight="bold"
-            color="white"
-            boxShadow="xl"
-            variant="solid"
-            onClick={() => onAdd(product)}
-          >
-            Agregar
-          </Button>
+          <Stack textAlign="center" display={isVisible ? "block" : "none"}>
+            <Text fontSize="lg" color="green.500" fontWeight="500">
+              {parseCurrency(product.price)}
+            </Text>
+            <Button
+              size="sm"
+              bg="primary.400"
+              fontWeight="bold"
+              color="white"
+              boxShadow="xl"
+              variant="solid"
+              onClick={() => onAdd(product)}
+            >
+              Agregar
+            </Button>
+          </Stack>
         </Stack>
       </Stack>
     </>
