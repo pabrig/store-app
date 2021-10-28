@@ -62,7 +62,6 @@ const DrawerCart: FC<Props> = ({
     [items, total]
   );
 
-  // console.log(items);
   return (
     <>
       {" "}

@@ -8,7 +8,7 @@ import {
   useDisclosure
 } from "@chakra-ui/react";
 
-import { Product, CartItem } from "../types/types";
+import { Product } from "../types/types";
 import ProductCard from "../components/ProductCard";
 import DrawerCart from "../components/DrawerCart";
 import { editCart } from "../utils/helpers";
@@ -16,10 +16,9 @@ import parseCurrency from "../utils/helpers";
 
 interface HomeContainerProps {
   products: Product[];
-  items: Product[];
 }
 
-const HomeContainer: FC<HomeContainerProps> = ({ products, items }) => {
+const HomeContainer: FC<HomeContainerProps> = ({ products }) => {
   const [cart, setCart] = useState<Product[]>([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const total = React.useMemo(
