@@ -32,7 +32,10 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
         p="6"
         rounded="md"
         cursor="pointer"
-        _hover={{ boxShadow: "dark-lg" }}
+        _hover={{
+          pt: -20,
+          transition: "0.8s"
+        }}
         onMouseOver={over}
         onMouseOut={out}
       >
@@ -43,10 +46,6 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
           objectFit="cover"
           borderRadius="md"
           mt={5}
-          _hover={{
-            mt: -10,
-            transition: "0.8s"
-          }}
         >
           <Image
             width="100%"
@@ -69,7 +68,13 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
           <Text fontSize="lg" textAlign="center">
             {product.description}{" "}
           </Text>
-          <Stack textAlign="center" display={isVisible ? "block" : "none"}>
+          <Stack
+            display={isVisible ? "flex" : "none"}
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            spacing={4}
+          >
             <Text fontSize="lg" color="green.500" fontWeight="500">
               {parseCurrency(product.price)}
             </Text>
