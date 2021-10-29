@@ -61,7 +61,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
           <Text fontSize="lg" textAlign="center">
             {product.description}{" "}
           </Text>
-          <Fade delay={0.5} in={isVisible}>
+          <Fade delay={0.3} in={isVisible}>
             <Stack
               display={isVisible ? "flex" : "none"}
               justifyContent="space-between"
