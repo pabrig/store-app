@@ -1,5 +1,5 @@
 import React, { FC, useState } from "react";
-import { Button, Stack, Text, Box, Image } from "@chakra-ui/react";
+import { Button, Stack, Text, Box, Image, Fade } from "@chakra-ui/react";
 
 import { Product } from "../types/types";
 import parseCurrency from "../utils/helpers";
@@ -20,7 +20,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
   }
   return (
     <>
-      <Stack
+      <Box
         height={300}
         backgroundColor="primary.100"
         borderRadius="md"
@@ -33,20 +33,15 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
         rounded="md"
         cursor="pointer"
         _hover={{
-          pt: -20,
+          pt: 5,
+          boxShadow: "2xl",
           transition: "0.8s"
         }}
         onMouseOver={over}
         onMouseOut={out}
       >
-        <Stack
-          spacing={1}
-          maxW={"330px"}
-          w={"full"}
-          objectFit="cover"
-          borderRadius="md"
-          mt={5}
-        >
+        <Stack _hover={{ mt: -10 }}>
+          {" "}
           <Image
             width="100%"
             maxHeight={128}
@@ -54,9 +49,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
             objectFit="cover"
             borderRadius="md"
             src={product.image}
-            _hover={{ boxShadow: "dark-lg" }}
           />
-
           <Text
             fontSize="2xl"
             color="primary.800"
@@ -68,30 +61,31 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
           <Text fontSize="lg" textAlign="center">
             {product.description}{" "}
           </Text>
-          <Stack
-            display={isVisible ? "flex" : "none"}
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-            spacing={4}
-          >
-            <Text fontSize="lg" color="green.500" fontWeight="500">
-              {parseCurrency(product.price)}
-            </Text>
-            <Button
-              size="sm"
-              bg="primary.400"
-              fontWeight="bold"
-              color="white"
-              boxShadow="xl"
-              variant="solid"
-              onClick={() => onAdd(product)}
+          <Fade delay={0.5} in={isVisible}>
+            <Stack
+              display={isVisible ? "flex" : "none"}
+              justifyContent="space-between"
+              textAlign="center"
+              alignItems="center"
             >
-              Agregar
-            </Button>
-          </Stack>
+              <Text fontSize="lg" color="green.500" fontWeight="500">
+                {parseCurrency(product.price)}
+              </Text>
+              <Button
+                size="sm"
+                bg="primary.400"
+                fontWeight="bold"
+                color="white"
+                boxShadow="xl"
+                variant="solid"
+                onClick={() => onAdd(product)}
+              >
+                Agregar
+              </Button>
+            </Stack>
+          </Fade>
         </Stack>
-      </Stack>
+      </Box>
     </>
   );
 };

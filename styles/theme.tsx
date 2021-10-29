@@ -4,7 +4,7 @@ import { information } from "../utils/constants";
 
 export default extendTheme({
   colors: {
-    primary: theme.colors["purple"]
+    primary: theme.colors["gray"]
   },
   styles: {
     global: {
