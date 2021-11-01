@@ -49,55 +49,63 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
         onMouseOver={over}
         onMouseOut={out}
       >
-        <Stack _hover={{ mt: -10 }}>
+        <Stack direction="row">
           {" "}
           <Image
-            width="100%"
-            maxHeight={128}
+            width={200}
+            height={300}
             mb={5}
             objectFit="cover"
             borderRadius="md"
             src={product.image}
           />
-          <Text
-            fontSize="2xl"
-            color="primary.800"
-            fontWeight={500}
-            textAlign="center"
+          <Stack
+            direction="column"
+            justifyContent="center"
+            align="center"
+            _hover={{ mt: -10 }}
           >
-            {product.title}
-          </Text>
-          <Text fontSize="lg" color="primary.800" textAlign="center">
-            {product.description}{" "}
-          </Text>
-          <Fade delay={0.3} in={isVisible}>
-            <Stack
-              display={isVisible ? "flex" : "none"}
-              justifyContent="center"
-              alignItems="center"
+            {" "}
+            <Text
+              fontSize="2xl"
+              color="primary.800"
+              fontWeight={500}
+              textAlign="center"
             >
-              <Text fontSize="lg" color="green.500" fontWeight="500">
-                {parseCurrency(product.price)}
-              </Text>
-              <Button
-                width="90%"
-                size="sm"
-                bg={useColorModeValue("gray.400", "gray.800")}
-                fontWeight="bold"
-                color="white"
-                boxShadow="xl"
-                variant="solid"
-                onClick={() => onAdd(product)}
-                leftIcon={
-                  <Image
-                    src={
-                      "https://icongr.am/fontawesome/cart-plus.svg?size=24&color=ffffff"
-                    }
-                  />
-                }
-              />
-            </Stack>
-          </Fade>
+              {product.title}
+            </Text>
+            <Text fontSize="lg" color="primary.800" textAlign="center">
+              {product.description}{" "}
+            </Text>
+            <Fade delay={0.3} in={isVisible}>
+              <Stack
+                display={isVisible ? "flex" : "none"}
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Text fontSize="lg" color="green.500" fontWeight="500">
+                  {parseCurrency(product.price)}
+                </Text>
+                <Button
+                  width="90%"
+                  size="sm"
+                  bg={useColorModeValue("gray.400", "gray.800")}
+                  fontWeight="bold"
+                  color="white"
+                  boxShadow="xl"
+                  variant="solid"
+                  onClick={() => onAdd(product)}
+                  leftIcon={
+                    <Image
+                      src={
+                        "https://icongr.am/fontawesome/cart-plus.svg?size=24&color=ffffff"
+                      }
+                    />
+                  }
+                />
+              </Stack>
+            </Fade>
+          </Stack>
         </Stack>
       </Box>
     </>
