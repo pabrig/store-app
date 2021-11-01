@@ -6,7 +6,8 @@ import {
   Box,
   Image,
   Fade,
-  useColorModeValue
+  useColorModeValue,
+  transition
 } from "@chakra-ui/react";
 import { FaBeer, FaSun } from "react-icons/fa";
 
@@ -53,8 +54,6 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
           <Stack
             height={260}
             width={400}
-            mt={-5}
-            ml={5}
             bgGradient={useColorModeValue(
               "linear-gradient(to top, #00b4db, #0083b0)",
               "linear-gradient(to top, #1488cc, #2b32b2)"
@@ -62,19 +61,25 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
             justifyContent="center"
             alignItems="center"
             rounded="3xl"
+            _hover={{
+              marginTop: -5,
+              marginLeft: 5,
+              boxShadow: "xl",
+              transition: "1.1s"
+            }}
           >
             <Image
               mb={5}
               objectFit="cover"
               borderRadius="md"
               src={product.image}
-              _hover={{ marginBottom: 20, marginRight: 10, transition: "0.9s" }}
+              _hover={{ marginBottom: 20, marginRight: 10, transition: "0.8s" }}
             />
           </Stack>
           <Stack
             direction="column"
-            p={1}
-            _hover={{ mt: -5, transition: "0.9s" }}
+            p={3}
+            _hover={{ mt: -5, transition: "0.8s" }}
           >
             {" "}
             <Text
