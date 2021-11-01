@@ -51,14 +51,16 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
         <Stack direction="row" justifyContent="center" alignItems="center">
           {" "}
           <Stack
+            height={260}
+            width={400}
+            mt={-5}
+            ml={5}
             bgGradient={useColorModeValue(
-              "linear-gradient(to top, #1488cc, #2b32b2)",
-              "linear-gradient(to top, #00b4db, #0083b0)"
+              "linear-gradient(to top, #00b4db, #0083b0)",
+              "linear-gradient(to top, #1488cc, #2b32b2)"
             )}
             justifyContent="center"
             alignItems="center"
-            height={260}
-            width={400}
             rounded="3xl"
           >
             <Image
@@ -69,7 +71,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
               _hover={{ marginBottom: 20, marginRight: 10 }}
             />
           </Stack>
-          <Stack direction="column" p={1} _hover={{ mt: -10 }}>
+          <Stack direction="column" p={1} _hover={{ mt: -5 }}>
             {" "}
             <Text
               fontSize="2xl"
