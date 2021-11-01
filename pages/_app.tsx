@@ -49,7 +49,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
                 marginTop={{ base: -16, sm: -20 }}
                 borderRadius={9999}
                 height={{ base: 32, sm: 36 }}
-                bg={useColorModeValue("white", "gray.900")}
+                bg={useColorModeValue("gray.100", "gray.900")}
               >
                 {" "}
                 <Image

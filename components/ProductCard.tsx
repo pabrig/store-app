@@ -31,7 +31,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
   return (
     <>
       <Stack
-        height={260}
+        height={310}
         bgGradient={useColorModeValue(
           "linear(to-l, gray.50, gray.200)",
           "linear(to-l, gray.700, gray.600)"
@@ -52,7 +52,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
         <Stack direction="row" justifyContent="center" alignItems="center">
           {" "}
           <Stack
-            height={260}
+            height={310}
             width={400}
             bgGradient={useColorModeValue(
               "linear-gradient(to top, #00b4db, #0083b0)",
@@ -99,7 +99,11 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
                 justifyContent="center"
                 alignItems="center"
               >
-                <Text fontSize="lg" color="green.500" fontWeight="500">
+                <Text
+                  fontSize="lg"
+                  color={useColorModeValue("green.400", "green.300")}
+                  fontWeight="700"
+                >
                   {parseCurrency(product.price)}
                 </Text>
                 <Button
