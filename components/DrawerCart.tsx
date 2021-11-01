@@ -14,7 +14,8 @@ import {
   CloseButton,
   Image,
   Divider,
-  IconButton
+  IconButton,
+  useColorModeValue
 } from "@chakra-ui/react";
 import { DeleteIcon, MinusIcon, AddIcon } from "@chakra-ui/icons";
 
@@ -67,7 +68,7 @@ const DrawerCart: FC<Props> = ({
       {" "}
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay />
-        <DrawerContent>
+        <DrawerContent bg={useColorModeValue("gray.50", "gray.700")}>
           <DrawerHeader>
             <Stack
               direction="row"

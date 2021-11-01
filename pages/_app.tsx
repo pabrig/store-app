@@ -9,11 +9,13 @@ import {
   Text,
   Divider,
   Flex,
-  Link
+  Link,
+  useColorModeValue
 } from "@chakra-ui/react";
 import { AppProps } from "next/dist/shared/lib/router/router";
 
 import theme from "../styles/theme";
+import ColorModeSwitcher from "../components/ColorModeSwitcher";
 import { information } from "../utils/constants";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
@@ -22,7 +24,6 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
       <ChakraProvider theme={theme}>
         <Divider marginY={3} />
         <Container
-          backgroundColor="white"
           boxShadow="md"
           marginY={5}
           maxWidth="container.xl"
@@ -45,7 +46,6 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
             >
               <Box
                 padding={1}
-                backgroundColor="white"
                 marginTop={{ base: -16, sm: -20 }}
                 borderRadius={9999}
                 height={32}
@@ -64,7 +64,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
                 <Text color="gray.500" fontWeight="600">
                   {information.description}
                 </Text>
-                <Stack direction="row" spacing={4}>
+                <Stack direction="row" spacing={4} alignItems="center">
                   {information.social.map((social) => (
                     <Link key={social.name} isExternal href={social.link}>
                       <Flex
@@ -72,16 +72,24 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
                         width={12}
                         alignItems="center"
                         justifyContent="center"
-                        backgroundColor="primary.500"
-                        color="white"
+                        backgroundColor={useColorModeValue(
+                          "gray.300",
+                          "gray.900"
+                        )}
                         borderRadius={99999}
                       >
                         <Image
-                          src={`https://icongr.am/fontawesome/${social.name}.svg?size=28&color=ffffff`}
+                          src={`https://icongr.am/fontawesome/${
+                            social.name
+                          }.svg?size=28&color=${useColorModeValue(
+                            "gray.700",
+                            "gray.50"
+                          )}`}
                         />
                       </Flex>
                     </Link>
                   ))}
+                  <ColorModeSwitcher />
                 </Stack>
               </Stack>
             </Stack>

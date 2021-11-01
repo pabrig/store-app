@@ -50,7 +50,7 @@ const HomeContainer: FC<HomeContainerProps> = ({ products }) => {
         {products.length ? (
           <Grid
             gridGap={8}
-            templateColumns="repeat(auto-fill, minmax(240px, 1fr))"
+            templateColumns="repeat(auto-fill, minmax(340px, 1fr))"
           >
             {products.map((product) => (
               <ProductCard

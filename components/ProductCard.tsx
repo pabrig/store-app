@@ -1,5 +1,14 @@
 import React, { FC, useState } from "react";
-import { Button, Stack, Text, Box, Image, Fade } from "@chakra-ui/react";
+import {
+  Button,
+  Stack,
+  Text,
+  Box,
+  Image,
+  Fade,
+  useColorModeValue
+} from "@chakra-ui/react";
+import { FaBeer, FaSun } from "react-icons/fa";
 
 import { Product } from "../types/types";
 import parseCurrency from "../utils/helpers";
@@ -22,18 +31,15 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
     <>
       <Box
         height={300}
-        backgroundColor="primary.100"
+        bg={useColorModeValue("gray.50", "gray.700")}
         borderRadius="md"
+        mt={20}
         pos={"relative"}
-        padding={10}
-        spacing={10}
         key={product.id}
         boxShadow="xl"
-        p="6"
         rounded="md"
         cursor="pointer"
         _hover={{
-          pt: 5,
           boxShadow: "2xl",
           transition: "0.8s"
         }}
@@ -58,30 +64,35 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
           >
             {product.title}
           </Text>
-          <Text fontSize="lg" textAlign="center">
+          <Text fontSize="lg" color="primary.800" textAlign="center">
             {product.description}{" "}
           </Text>
           <Fade delay={0.3} in={isVisible}>
             <Stack
               display={isVisible ? "flex" : "none"}
-              justifyContent="space-between"
-              textAlign="center"
+              justifyContent="center"
               alignItems="center"
             >
               <Text fontSize="lg" color="green.500" fontWeight="500">
                 {parseCurrency(product.price)}
               </Text>
               <Button
+                width="90%"
                 size="sm"
-                bg="primary.400"
+                bg={useColorModeValue("gray.300", "gray.600")}
                 fontWeight="bold"
                 color="white"
                 boxShadow="xl"
                 variant="solid"
                 onClick={() => onAdd(product)}
-              >
-                Agregar
-              </Button>
+                leftIcon={
+                  <Image
+                    src={
+                      "https://icongr.am/fontawesome/cart-plus.svg?size=24&color=ffffff"
+                    }
+                  />
+                }
+              />
             </Stack>
           </Fade>
         </Stack>
