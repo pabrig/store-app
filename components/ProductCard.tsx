@@ -78,7 +78,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
           </Stack>
           <Stack
             direction="column"
-            p={3}
+            width={320}
             _hover={{ mt: -5, transition: "0.8s" }}
           >
             {" "}
