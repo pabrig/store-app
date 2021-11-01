@@ -68,10 +68,14 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
               objectFit="cover"
               borderRadius="md"
               src={product.image}
-              _hover={{ marginBottom: 20, marginRight: 10 }}
+              _hover={{ marginBottom: 20, marginRight: 10, transition: "0.9s" }}
             />
           </Stack>
-          <Stack direction="column" p={1} _hover={{ mt: -5 }}>
+          <Stack
+            direction="column"
+            p={1}
+            _hover={{ mt: -5, transition: "0.9s" }}
+          >
             {" "}
             <Text
               fontSize="2xl"
