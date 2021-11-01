@@ -31,7 +31,10 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
     <>
       <Box
         height={300}
-        bg={useColorModeValue("gray.50", "gray.700")}
+        bgGradient={useColorModeValue(
+          "linear(to-l, gray.100, gray.200)",
+          "linear(to-l, gray.700, gray.600)"
+        )}
         borderRadius="md"
         mt={20}
         pos={"relative"}
@@ -79,7 +82,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
               <Button
                 width="90%"
                 size="sm"
-                bg={useColorModeValue("gray.300", "gray.600")}
+                bg={useColorModeValue("gray.400", "gray.800")}
                 fontWeight="bold"
                 color="white"
                 boxShadow="xl"

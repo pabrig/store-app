@@ -45,10 +45,11 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
               spacing={{ base: 3, sm: 6 }}
             >
               <Box
-                padding={1}
+                padding={{ base: 2, sm: 2 }}
                 marginTop={{ base: -16, sm: -20 }}
                 borderRadius={9999}
-                height={32}
+                height={{ base: 32, sm: 36 }}
+                bg={useColorModeValue("white", "gray.900")}
               >
                 {" "}
                 <Image
@@ -72,10 +73,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
                         width={12}
                         alignItems="center"
                         justifyContent="center"
-                        backgroundColor={useColorModeValue(
-                          "gray.300",
-                          "gray.900"
-                        )}
+                        bg={useColorModeValue("gray.300", "gray.900")}
                         borderRadius={99999}
                       >
                         <Image

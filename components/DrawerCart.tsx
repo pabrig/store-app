@@ -168,6 +168,7 @@ const DrawerCart: FC<Props> = ({
                   isExternal
                   as={Link}
                   colorScheme="whatsapp"
+                  color="white"
                   data-testid="complete-order"
                   href={`https://wa.me/5491141414141?text=${encodeURIComponent(
                     text
