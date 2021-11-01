@@ -29,18 +29,17 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
   }
   return (
     <>
-      <Box
-        height={300}
+      <Stack
+        height={260}
         bgGradient={useColorModeValue(
-          "linear(to-l, gray.100, gray.200)",
+          "linear(to-l, gray.50, gray.200)",
           "linear(to-l, gray.700, gray.600)"
         )}
-        borderRadius="md"
-        mt={20}
+        rounded="3xl"
+        mt={10}
         pos={"relative"}
         key={product.id}
         boxShadow="xl"
-        rounded="md"
         cursor="pointer"
         _hover={{
           boxShadow: "2xl",
@@ -49,22 +48,28 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
         onMouseOver={over}
         onMouseOut={out}
       >
-        <Stack direction="row">
+        <Stack direction="row" justifyContent="center" alignItems="center">
           {" "}
-          <Image
-            width={200}
-            height={300}
-            mb={5}
-            objectFit="cover"
-            borderRadius="md"
-            src={product.image}
-          />
           <Stack
-            direction="column"
+            bgGradient={useColorModeValue(
+              "linear-gradient(to top, #1488cc, #2b32b2)",
+              "linear-gradient(to top, #00b4db, #0083b0)"
+            )}
             justifyContent="center"
-            align="center"
-            _hover={{ mt: -10 }}
+            alignItems="center"
+            height={260}
+            width={400}
+            rounded="3xl"
           >
+            <Image
+              mb={5}
+              objectFit="cover"
+              borderRadius="md"
+              src={product.image}
+              _hover={{ marginBottom: 20, marginRight: 10 }}
+            />
+          </Stack>
+          <Stack direction="column" p={1} _hover={{ mt: -10 }}>
             {" "}
             <Text
               fontSize="2xl"
@@ -107,7 +112,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
             </Fade>
           </Stack>
         </Stack>
-      </Box>
+      </Stack>
     </>
   );
 };
