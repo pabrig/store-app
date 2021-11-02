@@ -22,7 +22,6 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
     <Box padding={4}>
       <ChakraProvider theme={theme}>
-        <Divider marginY={3} />
         <Container
           boxShadow="md"
           marginY={5}

@@ -33,7 +33,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
       <Stack
         height={310}
         bgGradient={useColorModeValue(
-          "linear(to-l, gray.50, gray.200)",
+          "linear(to-t, gray.300, gray.100)",
           "linear(to-l, gray.700, gray.600)"
         )}
         rounded="3xl"
@@ -55,7 +55,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
             height={310}
             width={400}
             bgGradient={useColorModeValue(
-              "linear-gradient(to top, #00b4db, #0083b0)",
+              "linear-gradient(to bottom, #f2994a, #f2c94c)",
               "linear-gradient(to top, #1488cc, #2b32b2)"
             )}
             justifyContent="center"
@@ -73,7 +73,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
               objectFit="cover"
               borderRadius="md"
               src={product.image}
-              _hover={{ marginBottom: 20, marginRight: 10, transition: "0.8s" }}
+              // _hover={{ marginBottom: 20, marginRight: 10, transition: "0.8s" }}
             />
           </Stack>
           <Stack
@@ -98,6 +98,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
                 display={isVisible ? "flex" : "none"}
                 justifyContent="center"
                 alignItems="center"
+                mt={10}
               >
                 <Text
                   fontSize="lg"
@@ -109,7 +110,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
                 <Button
                   width="90%"
                   size="sm"
-                  bg={useColorModeValue("gray.400", "gray.800")}
+                  bg={useColorModeValue("gray.500", "gray.800")}
                   fontWeight="bold"
                   color="white"
                   boxShadow="xl"
@@ -120,6 +121,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
                       src={
                         "https://icongr.am/fontawesome/cart-plus.svg?size=24&color=ffffff"
                       }
+                      _hover={{ backgroundColor: "red" }}
                     />
                   }
                 />
