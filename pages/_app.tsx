@@ -7,7 +7,6 @@ import {
   Image,
   Heading,
   Text,
-  Divider,
   Flex,
   Link,
   useColorModeValue
@@ -15,7 +14,7 @@ import {
 import { AppProps } from "next/dist/shared/lib/router/router";
 
 import theme from "../styles/theme";
-import ColorModeSwitcher from "../components/ColorModeSwitcher";
+import ColorModeSwitcher from "../components/SwitcherColor/ColorModeSwitcher";
 import { information } from "../utils/constants";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {

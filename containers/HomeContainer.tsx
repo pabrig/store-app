@@ -9,9 +9,9 @@ import {
 } from "@chakra-ui/react";
 
 import { Product } from "../types/types";
-import ProductCard from "../components/ProductCard";
-import DrawerCart from "../components/DrawerCart";
-import ButtonCart from "../components/ButtonCart";
+import ProductCard from "../components/Product/ProductCard";
+import DrawerCart from "../components/Cart/DrawerCart";
+import ButtonCart from "../components/Buttons/ButtonCart";
 import { editCart } from "../utils/helpers";
 import parseCurrency from "../utils/helpers";
 
