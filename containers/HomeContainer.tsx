@@ -11,6 +11,7 @@ import {
 import { Product } from "../types/types";
 import ProductCard from "../components/ProductCard";
 import DrawerCart from "../components/DrawerCart";
+import ButtonCart from "../components/ButtonCart";
 import { editCart } from "../utils/helpers";
 import parseCurrency from "../utils/helpers";
 
@@ -63,47 +64,7 @@ const HomeContainer: FC<HomeContainerProps> = ({ products }) => {
         ) : (
           <Text>No hay productos</Text>
         )}
-        {Boolean(cart.length) && (
-          <Flex
-            alignItems="center"
-            justifyContent="center"
-            bottom={4}
-            position="sticky"
-          >
-            <Button
-              size="lg"
-              width="100%"
-              margin="auto"
-              padding={2}
-              backgroundColor="green.400"
-              boxShadow="2xl"
-              color="white"
-              onClick={onOpen}
-            >
-              <Stack alignItems="center" direction="row" spacing={8}>
-                <Stack alignItems="center" direction="row" spacing={8}>
-                  <Text fontSize="md" lineHeight={6}>
-                    Ver Carrito
-                  </Text>
-                  <Text
-                    backgroundColor="rgba(0,0,0,0.25)"
-                    borderRadius="xs"
-                    color="gray.100"
-                    fontSize="s"
-                    fontWeight="500"
-                    paddingX={2}
-                    paddingY={1}
-                  >
-                    {quantity} items
-                  </Text>
-                </Stack>
-                <Text fontSize="md" lineHeight={6}>
-                  {total}
-                </Text>
-              </Stack>
-            </Button>
-          </Flex>
-        )}
+        {Boolean(cart.length) && <ButtonCart onClick={onOpen} />}
         <DrawerCart
           items={cart}
           isOpen={isOpen}

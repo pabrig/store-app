@@ -6,10 +6,8 @@ import {
   Box,
   Image,
   Fade,
-  useColorModeValue,
-  transition
+  useColorModeValue
 } from "@chakra-ui/react";
-import { FaBeer, FaSun } from "react-icons/fa";
 
 import { Product } from "../types/types";
 import parseCurrency from "../utils/helpers";
@@ -121,7 +119,6 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
                       src={
                         "https://icongr.am/fontawesome/cart-plus.svg?size=24&color=ffffff"
                       }
-                      _hover={{ backgroundColor: "red" }}
                     />
                   }
                 />
