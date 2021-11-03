@@ -110,8 +110,6 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
                   <ModalContent
                     width={{ base: 330, sm: 450 }}
                     mt={{ base: 40, sm: 20 }}
-                    ml={4}
-                    mr={4}
                     rounded="3xl"
                   >
                     <ModalHeader> </ModalHeader>
