@@ -11,7 +11,7 @@ const Images: FC<ImageProps> = ({ image, isModal }) => {
       {isModal ? (
         <Stack
           width={{ base: 280, sm: 400 }}
-          height={{ base: 280, sm: 400 }}
+          height={{ base: 220, sm: 320 }}
           bgGradient={useColorModeValue(
             "linear-gradient(to bottom, #f2994a, #f2c94c)",
             "linear-gradient(to top, #1488cc, #2b32b2)"
@@ -21,7 +21,7 @@ const Images: FC<ImageProps> = ({ image, isModal }) => {
           rounded="3xl"
         >
           <Image
-            width={260}
+            width={210}
             p={5}
             objectFit="cover"
             borderRadius="md"

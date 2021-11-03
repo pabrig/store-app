@@ -72,7 +72,7 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
             <Description
               isModal={false}
               title={product.title}
-              short_description={product.short_description}
+              description={product.description}
               long_description={product.long_description}
             />
             <Fade delay={0.3} in={isVisible}>
@@ -107,19 +107,18 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
                   onClose={onClose}
                 >
                   <ModalOverlay />
-                  <ModalContent
-                    width={{ base: 330, sm: 450 }}
-                    mt={{ base: 40, sm: 20 }}
-                    rounded="3xl"
-                  >
-                    <ModalHeader> </ModalHeader>
-                    <ModalCloseButton />
+                  <ModalContent width={{ base: 330, sm: 470 }} rounded="3xl">
+                    <ModalHeader>
+                      {" "}
+                      <ModalCloseButton />{" "}
+                    </ModalHeader>
+
                     <ModalBody>
                       <Images isModal image={product.image} />
                       <Description
-                        isModal={true}
+                        isModal
                         title={product.title}
-                        short_description={product.short_description}
+                        description={product.description}
                         long_description={product.long_description}
                       />
                     </ModalBody>
