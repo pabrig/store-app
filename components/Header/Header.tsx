@@ -63,12 +63,7 @@ const Header = () => {
                     borderRadius={99999}
                   >
                     <Image
-                      src={`https://icongr.am/fontawesome/${
-                        social.name
-                      }.svg?size=28&color=${useColorModeValue(
-                        "gray.700",
-                        "gray.50"
-                      )}`}
+                      src={`https://icongr.am/fontawesome/${social.name}.svg?size=28&color=ffff`}
                     />
                   </Flex>
                 </Link>

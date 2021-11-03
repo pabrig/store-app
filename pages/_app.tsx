@@ -3,6 +3,7 @@ import { Box, ChakraProvider, Container } from "@chakra-ui/react";
 import { AppProps } from "next/dist/shared/lib/router/router";
 
 import Header from "../components/Header/Header";
+import Footer from "../components/Footer/Footer";
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -17,6 +18,7 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         >
           <Header />
           <Component {...pageProps} />
+          <Footer />
         </Container>
       </ChakraProvider>
     </Box>
