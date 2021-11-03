@@ -3,10 +3,17 @@ import { Text } from "@chakra-ui/react";
 
 interface DescriptionProps {
   title: string;
-  description: string;
+  short_description: string;
+  long_description: string;
+  isModal: boolean;
 }
 
-const Description: FC<DescriptionProps> = ({ title, description }) => {
+const Description: FC<DescriptionProps> = ({
+  title,
+  short_description,
+  long_description,
+  isModal
+}) => {
   return (
     <>
       <Text
@@ -14,12 +21,19 @@ const Description: FC<DescriptionProps> = ({ title, description }) => {
         color="primary.800"
         fontWeight={500}
         textAlign="center"
+        mt={4}
       >
         {title}
       </Text>
-      <Text fontSize="lg" color="primary.800" textAlign="center">
-        {description}
-      </Text>
+      {isModal ? (
+        <Text fontSize="lg" color="primary.800" textAlign="center">
+          {long_description}
+        </Text>
+      ) : (
+        <Text fontSize="lg" color="primary.800" textAlign="center">
+          {short_description}
+        </Text>
+      )}
     </>
   );
 };

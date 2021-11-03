@@ -1,19 +1,37 @@
 import React, { FC, useState } from "react";
-import { Stack, useColorModeValue, Text, Fade } from "@chakra-ui/react";
+import {
+  Stack,
+  useColorModeValue,
+  Text,
+  Fade,
+  Button,
+  useDisclosure,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  IconButton,
+  ModalCloseButton
+} from "@chakra-ui/react";
 
 import { Product } from "../../types/types";
 import Images from "./Images";
 import Description from "./Description";
 import parseCurrency from "../../utils/helpers";
 import ButtonOnAdd from "./ButtonOnAdd";
+import { DeleteIcon, MinusIcon, AddIcon } from "@chakra-ui/icons";
 
 interface ProductCardProps {
   product: Product;
   onAdd: (product: Product) => void;
+  onOpen: () => void;
 }
 
 const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   function over() {
     setIsVisible(true);
@@ -45,15 +63,17 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
       >
         <Stack direction="row" justifyContent="center" alignItems="center">
           {" "}
-          <Images image={product.image} />
+          <Images isModal={false} image={product.image} />
           <Stack
             direction="column"
             width={320}
             _hover={{ mt: -5, transition: "0.8s" }}
           >
             <Description
+              isModal={false}
               title={product.title}
-              description={product.description}
+              short_description={product.short_description}
+              long_description={product.long_description}
             />
             <Fade delay={0.3} in={isVisible}>
               <Stack
@@ -69,7 +89,48 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
                 >
                   {parseCurrency(product.price)}
                 </Text>
-                <ButtonOnAdd onAdd={() => onAdd(product)} />
+
+                <Button
+                  width="90%"
+                  bg={useColorModeValue("gray.500", "gray.800")}
+                  fontWeight="bold"
+                  color="white"
+                  boxShadow="xl"
+                  variant="solid"
+                  onClick={onOpen}
+                >
+                  Ver Producto
+                </Button>
+                <Modal
+                  blockScrollOnMount={false}
+                  isOpen={isOpen}
+                  onClose={onClose}
+                >
+                  <ModalOverlay />
+                  <ModalContent
+                    width={{ base: 330, sm: 450 }}
+                    mt={{ base: 40, sm: 20 }}
+                    ml={4}
+                    mr={4}
+                    rounded="3xl"
+                  >
+                    <ModalHeader> </ModalHeader>
+                    <ModalCloseButton />
+                    <ModalBody>
+                      <Images isModal image={product.image} />
+                      <Description
+                        isModal={true}
+                        title={product.title}
+                        short_description={product.short_description}
+                        long_description={product.long_description}
+                      />
+                    </ModalBody>
+
+                    <ModalFooter>
+                      <ButtonOnAdd onAdd={() => onAdd(product)} />
+                    </ModalFooter>
+                  </ModalContent>
+                </Modal>
               </Stack>
             </Fade>
           </Stack>
@@ -79,3 +140,5 @@ const ProductCard: FC<ProductCardProps> = ({ product, onAdd }) => {
   );
 };
 export default ProductCard;
+
+//isModal Boolean

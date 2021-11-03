@@ -21,7 +21,6 @@ const Body: FC<BodyProps> = ({
   price,
   quantity
 }) => {
-  console.log("title:", title);
   return (
     <>
       <Stack

@@ -10,7 +10,7 @@ const ButtonOnAdd: FC<ButtonOnAddProps> = ({ onAdd }) => {
     <>
       {" "}
       <Button
-        width="90%"
+        width="100%"
         size="sm"
         bg={useColorModeValue("gray.500", "gray.800")}
         fontWeight="bold"
