@@ -9,14 +9,12 @@ import {
   Stack,
   Text,
   CloseButton,
-  Divider,
-  IconButton,
   useColorModeValue
 } from "@chakra-ui/react";
-import { DeleteIcon, MinusIcon, AddIcon } from "@chakra-ui/icons";
 
 import { Product } from "../../types/types";
 import parseCurrency from "../../utils/helpers";
+import Body from "./Body";
 import Footer from "./Footer";
 
 interface Props extends Omit<DrawerProps, "children"> {
@@ -81,77 +79,15 @@ const DrawerCart: FC<Props> = ({
             <Stack>
               {items.length ? (
                 items.map((product) => (
-                  <Stack
+                  <Body
                     key={product.id}
-                    data-testid="cart-item"
-                    boxShadow="md"
-                    p="6"
-                    rounded="md"
-                  >
-                    <Stack width="100%" marginBottom={5}>
-                      <Stack
-                        alignItems="center"
-                        direction="row"
-                        fontWeight="500"
-                        justifyContent="space-between"
-                      >
-                        <Text fontSize="lg">{product.title}</Text>
-                        <Text color="green.500">
-                          {parseCurrency(product.price * product.quantity)}
-                        </Text>
-                      </Stack>
-                    </Stack>
-                    <Divider></Divider>
-
-                    <Stack
-                      direction="row"
-                      margin="auto"
-                      justifyContent="space-between"
-                      spacing={4}
-                    >
-                      <Text>Unidades</Text>
-                      <Stack direction="row" margin="auto">
-                        <IconButton
-                          data-testid="decrement"
-                          colorScheme="teal"
-                          aria-label="Decrement units"
-                          size="xs"
-                          icon={<MinusIcon />}
-                          onClick={() => onDecrement(product)}
-                        />
-
-                        <Text data-testid="quantity" fontWeight="500">
-                          {product.quantity}
-                        </Text>
-
-                        <IconButton
-                          data-testid="increment"
-                          colorScheme="teal"
-                          aria-label="Increment units"
-                          size="xs"
-                          icon={<AddIcon />}
-                          onClick={() => onIncrement(product)}
-                        />
-                        <IconButton
-                          data-testid="delete"
-                          colorScheme="red"
-                          aria-label="Call Segun"
-                          size="xs"
-                          icon={<DeleteIcon />}
-                          onClick={() => onDelete(product)}
-                        />
-                      </Stack>
-                    </Stack>
-                  </Stack>
-                  //   <Body
-                  //   key={product.id}
-                  //   title={product.title}
-                  //   price={parseCurrency(product.price * product.quantity)}
-                  //   quantity={product.quantity}
-                  //   onDecrement={() => onDecrement(product)}
-                  //   onIncrement={() => onIncrement(product)}
-                  //   onDelete={() => onDelete(product)}
-                  // />
+                    title={product.title}
+                    price={parseCurrency(product.price * product.quantity)}
+                    quantity={product.quantity}
+                    onDecrement={() => onDecrement(product)}
+                    onIncrement={() => onIncrement(product)}
+                    onDelete={() => onDelete(product)}
+                  />
                 ))
               ) : (
                 <Text>No hay productos en tu carrito</Text>
